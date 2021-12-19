@@ -1,0 +1,25 @@
+{
+  "name": "lova-backend",
+  "version": "1.0.0",
+  "description": "\"# lova-backend\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MariFauzan20/lova-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MariFauzan20/lova-backend/issues"
+  },
+  "homepage": "https://github.com/MariFauzan20/lova-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  }
+}
