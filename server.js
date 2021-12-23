@@ -4,6 +4,8 @@ const db = require("./db/db");
 const app = express();
 const port = process.env.PORT || 3000;
 
+require("./routes/region")(app);
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
