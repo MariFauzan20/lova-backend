@@ -1,9 +1,10 @@
 module.exports = (app) => {
   const provinces = require("../controller/province");
+  const authenticateJWT = require("../middleware/middleware");
   const router = require("express").Router();
 
   // Create a new province
-  router.post("/", provinces.create);
+  router.post("/", authenticateJWT, provinces.create);
 
   // Retrieve all province
   router.get("/", provinces.findAll);
@@ -12,10 +13,10 @@ module.exports = (app) => {
   router.get("/:id", provinces.findOne);
 
   // Update a province with id
-  router.put("/:id", provinces.update);
+  router.put("/:id", authenticateJWT, provinces.update);
 
   // Delete a province with id
-  router.delete("/:id", provinces.delete);
+  router.delete("/:id", authenticateJWT, provinces.delete);
 
   app.use("/api/provinces", router);
 };
