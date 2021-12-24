@@ -1,11 +1,11 @@
 # API Specification
 
-## Create Provinsi
+## Create Province
 
 Request :
 
 - Method : POST
-- Endpoint : `/api/lova/provinsi`
+- Endpoint : `/api/provinces`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -13,8 +13,7 @@ Request :
 
 ```json
 {
-  "id": "string, unique",
-  "name": "string"
+  "province_name": "string"
 }
 ```
 
@@ -22,23 +21,19 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id": "string, unique",
-    "name": "string",
+    "province_name": "string",
     "createdAt": "date",
-    "updatedAt": "date"
-  }
+    "updatedAt": "date",
+    "id": "string, unique"
 }
 ```
 
-## Get Provinsi
+## Get All Province
 
 Request :
 
 - Method : GET
-- Endpoint : `/api/lova/{id_provinsi}`
+- Endpoint : `/api/provinces`
 - Header :
   - Accept: application/json
 
@@ -46,23 +41,39 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id": "string, unique",
-    "name": "string",
-    "createdAt": "date",
-    "updatedAt": "date"
-  }
+  "province_name": "string",
+  "createdAt": "date",
+  "updatedAt": "date",
+  "id": "string, unique"
 }
 ```
 
-## Update Provinsi
+## Get Province By Id
+
+Request :
+
+- Method : GET
+- Endpoint : `/api/provinces/{id}`
+- Header :
+  - Accept: application/json
+
+Response :
+
+```json
+{
+  "province_name": "string",
+  "createdAt": "date",
+  "updatedAt": "date",
+  "id": "string, unique"
+}
+```
+
+## Update Province By Id
 
 Request :
 
 - Method : PUT
-- Endpoint : `/api/lova/{id_provinsi}`
+- Endpoint : `/api/provinces/{id}`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -70,7 +81,7 @@ Request :
 
 ```json
 {
-  "name": "string"
+  "province_name": "string"
 }
 ```
 
@@ -78,58 +89,16 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id": "string, unique",
-    "name": "string",
-    "createdAt": "date",
-    "updatedAt": "date"
-  }
+  "message": "string"
 }
 ```
 
-## List Provinsi
-
-Request :
-
-- Method : GET
-- Endpoint : `/api/lova/provinsi`
-- Header :
-  - Accept: application/json
-- Query Param :
-  - size : number,
-  - page : number
-
-Response :
-
-```json
-{
-  "code": "number",
-  "status": "string",
-  "data": [
-    {
-      "id": "string, unique",
-      "name": "string",
-      "createdAt": "date",
-      "updatedAt": "date"
-    },
-    {
-      "id": "string, unique",
-      "name": "string",
-      "createdAt": "date",
-      "updatedAt": "date"
-    }
-  ]
-}
-```
-
-## Delete Provinsi
+## Delete Province By Id
 
 Request :
 
 - Method : DELETE
-- Endpoint : `/api/lova/provinsi/{id_provinsi}`
+- Endpoint : `/api/province/{id}`
 - Header :
   - Accept: application/json
 
@@ -137,17 +106,16 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string"
+  "message": "string"
 }
 ```
 
-## Create Kota/Kabupaten
+## Create City
 
 Request :
 
 - Method : POST
-- Endpoint : `/api/lova/provinsi/kota-kab`
+- Endpoint : `/api/cities`
 - Header :
   - Content-Type: application/json
   - Accept: application/json
@@ -155,9 +123,8 @@ Request :
 
 ```json
 {
-  "id-kota": "string, unique",
-  "id-prov": "string",
-  "name": "string"
+  "province": "string, unique",
+  "city_name": "string"
 }
 ```
 
@@ -165,24 +132,19 @@ Response :
 
 ```json
 {
-  "code": "number",
-  "status": "string",
-  "data": {
-    "id-kota": "string, unique",
-    "id-prov": "string",
-    "name": "string",
+    "province": "string, unique",
+    "city_name": "string",
     "createdAt": "date",
     "updatedAt": "date"
-  }
 }
 ```
 
-## Get Kota/Kabupaten
+## Get All City
 
 Request :
 
 - Method : GET
-- Endpoint : `/api/lova/{name_provinsi}/{id_kota}`
+- Endpoint : `/api/cities`
 - Header :
   - Accept: application/json
 
