@@ -1,11 +1,15 @@
 module.exports = (mongoose) => {
   let schema = mongoose.Schema(
     {
+      city: {
+        type: mongoose.Types.ObjectId,
+        ref: "cities",
+      },
       title: String,
       date_start: Date,
       date_end: Date,
-      time_start: timestamps,
-      time_end: timestamps,
+      time_start: String,
+      time_end: String,
       registration: String,
       agerange: [String],
       description: String,

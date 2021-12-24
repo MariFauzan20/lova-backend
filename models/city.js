@@ -1,8 +1,11 @@
 module.exports = (mongoose) => {
   let schema = mongoose.Schema(
     {
-      province_name: String,
-      city: [String],
+      province: {
+        type: mongoose.Types.ObjectId,
+        ref: "provinces",
+      },
+      city_name: String,
     },
     {
       timestamps: true,
@@ -16,6 +19,6 @@ module.exports = (mongoose) => {
     return object;
   });
 
-  const Region = mongoose.model("region", schema);
-  return Region;
+  const City = mongoose.model("cities", schema);
+  return City;
 };

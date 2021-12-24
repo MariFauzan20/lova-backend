@@ -1,25 +1,32 @@
 const express = require("express");
-const db = require("./db/db");
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-require("./routes/region")(app);
+app.use(express.json());
+
+const db = require("./models");
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Connected to the database!");
+  })
+  .catch((err) => {
+    console.log("Cannot connect to the databse!", err);
+    process.exit();
+  });
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({ message: "OK" });
 });
 
-async function main() {
-  try {
-    await db.connect();
+require("./routes/locations")(app);
+require("./routes/cities")(app);
+require("./routes/provinces")(app);
 
-    app.listen(port, () => {
-      console.log(`Example app listening at http://localhost:${port}`);
-    });
-  } catch (error) {
-    console.log("Server closed: error: ", err);
-  }
-}
-
-main();
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
